@@ -3,17 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\EventoDispositivo;
+use Illuminate\Support\Facades\Auth;
 
 class PanelController extends Controller
 {
+    // Mostrar el panel de control
     public function index()
     {
-        $eventos = EventoDispositivo::latest()->limit(30)->get();
-        return view('dashboard', compact('eventos'));
+        $dispositivo = null;
+
+        // Verifica si hay usuario logueado
+        if ($user = Auth::user()) {
+            $dispositivo = $user->dispositivo; // Trae el dispositivo asociado (puede ser null)
+        }
+
+        // Siempre pasa la variable a la vista
+        return view('dashboard', compact('dispositivo'));
     }
 
-    public function eventosJson()
+
+
+public function eventosJson()
     {
         return EventoDispositivo::latest()->limit(30)->get();
     }
