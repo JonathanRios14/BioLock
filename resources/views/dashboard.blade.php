@@ -10,7 +10,7 @@
         }
 
         * {
-            box-sizing: border-box; /* evita overflow con padding */
+            box-sizing: border-box;
         }
 
         body {
@@ -104,6 +104,15 @@
 
         .btn-primary:hover {
             background-color: var(--azul-medio);
+        }
+
+        .btn-secondary {
+            background-color: var(--gris-claro);
+            color: var(--azul-oscuro);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
         }
 
         /* ==== RESPONSIVE ==== */
@@ -217,6 +226,12 @@
                     <button type="submit" class="btn btn-primary">Añadir Huella</button>
                 </form>
             @endif
+
+            {{-- Botón cerrar sesión --}}
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-secondary">Cerrar Sesión</button>
+            </form>
         </div>
     </div>
 </x-guest-layout>
