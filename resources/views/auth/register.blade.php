@@ -1,6 +1,6 @@
 <x-guest-layout>
     <style>
-        /* ==== ESTILOS PERSONALIZADOS ==== */
+        /* ==== VARIABLES ==== */
         :root {
             --azul-oscuro: #0a1f44;
             --azul-medio: #153e75;
@@ -10,38 +10,51 @@
             --gris-texto: #a0aec0;
         }
 
+        /* ==== ESTILOS GENERALES ==== */
+        * {
+            box-sizing: border-box; /* ✅ evita que padding cause overflow */
+        }
+
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background-color: var(--azul-oscuro);
+            background: linear-gradient(180deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
             color: var(--blanco);
             min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            padding: 1rem;
         }
 
         .register-container {
             width: 100%;
-            max-width: 400px;
-            padding: 2rem;
+            max-width: 420px;
         }
 
         .card {
             background-color: var(--blanco);
             border-radius: 1.25rem;
             padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            transition: all 0.3s ease;
         }
 
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ==== LOGO ==== */
         .logo {
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .logo img {
-            height: 200px;
-            width: auto;
+            height: 180px;
+            max-width: 100%;
             display: block;
             margin: 0 auto;
         }
@@ -49,18 +62,19 @@
         h1 {
             font-size: 1.6rem;
             color: var(--blanco);
-            text-align: center;
-            margin-top: 1rem;
             font-weight: 600;
+            margin-top: 0.5rem;
+            text-align: center;
         }
 
         p.subtitle {
             text-align: center;
             color: var(--gris-texto);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            margin-bottom: 1.3rem;
         }
 
+        /* ==== FORM ==== */
         label {
             font-size: 0.9rem;
             color: var(--azul-oscuro);
@@ -73,20 +87,22 @@
         input[type="email"],
         input[type="password"] {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 0.85rem 1rem;
             border: 1px solid #d1d5db;
             border-radius: 0.75rem;
             font-size: 0.95rem;
             color: #111827;
             background-color: #f9fafb;
-            transition: border 0.3s;
+            transition: border 0.3s, box-shadow 0.3s;
         }
 
         input:focus {
             outline: none;
             border-color: var(--azul-claro);
+            box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.2);
         }
 
+        /* ==== BOTONES ==== */
         .btn {
             display: block;
             width: 100%;
@@ -97,7 +113,11 @@
             font-size: 1rem;
             border: none;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
         }
 
         .btn-primary {
@@ -119,13 +139,6 @@
             background-color: #edf2f7;
         }
 
-        .footer {
-            text-align: center;
-            color: var(--gris-texto);
-            font-size: 0.8rem;
-            margin-top: 1.5rem;
-        }
-
         .link {
             font-size: 0.85rem;
             color: var(--azul-claro);
@@ -136,19 +149,65 @@
             text-decoration: underline;
         }
 
-        /* MOBILE OPTIMIZACIÓN */
-        @media (max-width: 480px) {
-            .card {
-                padding: 2rem;
+        /* ==== RESPONSIVE ==== */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+                align-items: flex-start;
             }
+
+            .card {
+                padding: 1.6rem;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            .logo img {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .register-container {
+                max-width: 100%;
+                padding: 0 0.5rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+                border-radius: 1rem;
+            }
+
             h1 {
                 font-size: 1.2rem;
             }
-            .btn {
-                font-size: 0.95rem;
+
+            p.subtitle {
+                font-size: 0.85rem;
             }
-            .logo img {
-                height: 220px;
+
+            input,
+            .btn {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .card {
+                padding: 1rem;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="password"] {
+                font-size: 0.85rem;
+                padding: 0.7rem 0.8rem;
             }
         }
     </style>
@@ -204,6 +263,5 @@
                 </div>
             </form>
         </div>
-
     </div>
 </x-guest-layout>
