@@ -30,7 +30,7 @@
 
     <div class="register-container">
         <div class="logo">
-            <img src="{{ asset('images/biolockpng.png') }}" alt="BioLock">
+            <br>
             <h1>Crear cuenta</h1>
             <p class="subtitle">Regístrate para comenzar a usar tu llavín inteligente</p>
         </div>

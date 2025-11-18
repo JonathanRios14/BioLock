@@ -213,21 +213,17 @@
                 <p>¡Tu llavín está listo para usar! ✅</p>
                 <p>Pulsa el botón para abrirlo o añade nuevas huellas si lo deseas.</p>
 
-                {{-- Botón abrir --}}
                 <form method="POST" action="{{ route('dispositivo.abrir') }}">
                     @csrf
                     <button type="submit" class="btn btn-primary">Abrir Llavín</button>
                 </form>
 
-                {{-- Formulario enrolar --}}
                 <form method="POST" action="{{ route('dispositivo.enrolar') }}">
                     @csrf
-                    <input type="number" name="finger_id" placeholder="ID Huella (1-127)" min="1" max="127" required>
                     <button type="submit" class="btn btn-primary">Añadir Huella</button>
                 </form>
             @endif
 
-            {{-- Botón cerrar sesión --}}
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="btn btn-secondary">Cerrar Sesión</button>
